@@ -9,6 +9,7 @@
 from turtle import Turtle, Screen, penup
 import time
 
+from ball import Ball
 from paddle import Paddle
 
 game_is_on = True
@@ -20,6 +21,7 @@ screen.tracer(0)
 
 r_paddle = Paddle((350, 0))
 l_paddle = Paddle((-350, 0))
+ball = Ball()
 
 screen.listen()
 screen.onkey(r_paddle.up, "Up")
@@ -28,7 +30,10 @@ screen.onkey(l_paddle.up, "w")
 screen.onkey(l_paddle.down, "s")
 
 while game_is_on:
-    screen.update()  # show after all three moved
     time.sleep(0.1)
+    screen.update()  # show after all three moved
+    ball.move()
 
+    if ball.ycor() > 280 or ball.ycor() > -280:
+        ball.turn()
 screen.exitonclick()
