@@ -1,10 +1,11 @@
 from turtle import Turtle
 
+
 class Ball(Turtle):
 
     def __init__(self):
         super().__init__()
-        self.shape("turtle")
+        self.shape("circle")
         self.color("white")
         self.penup()
         self.x_move = 10
@@ -15,6 +16,8 @@ class Ball(Turtle):
         new_y = self.ycor() + self.y_move
         self.goto(new_x, new_y)
 
-    def turn(self):
-        self.y_move * -1
+    def y_turn(self):
+        self.y_move *= -1
 
+    def x_turn(self):
+        self.x_move *= -1
